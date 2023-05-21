@@ -1,0 +1,121 @@
+cmake_minimum_required(VERSION 3.22)
+project(tests_api_requeteur_en_c C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(.)
+include_directories(cJSON)
+include_directories(cJSON/tests)
+include_directories(cJSON/tests/unity/examples)
+include_directories(cJSON/tests/unity/examples/example_1/src)
+include_directories(cJSON/tests/unity/examples/example_2/src)
+include_directories(cJSON/tests/unity/examples/example_3/helper)
+include_directories(cJSON/tests/unity/examples/example_3/src)
+include_directories(cJSON/tests/unity/extras/fixture/src)
+include_directories(cJSON/tests/unity/extras/fixture/test)
+include_directories(cJSON/tests/unity/src)
+include_directories(cJSON/tests/unity/test/expectdata)
+include_directories(cJSON/tests/unity/test/testdata)
+
+add_executable(tests_api_requeteur_en_c
+        cJSON/fuzzing/afl.c
+        cJSON/fuzzing/cjson_read_fuzzer.c
+        cJSON/fuzzing/fuzz_main.c
+        cJSON/tests/unity/examples/example_1/src/ProductionCode.c
+        cJSON/tests/unity/examples/example_1/src/ProductionCode.h
+        cJSON/tests/unity/examples/example_1/src/ProductionCode2.c
+        cJSON/tests/unity/examples/example_1/src/ProductionCode2.h
+        cJSON/tests/unity/examples/example_1/test/test_runners/TestProductionCode2_Runner.c
+        cJSON/tests/unity/examples/example_1/test/test_runners/TestProductionCode_Runner.c
+        cJSON/tests/unity/examples/example_1/test/TestProductionCode.c
+        cJSON/tests/unity/examples/example_1/test/TestProductionCode2.c
+        cJSON/tests/unity/examples/example_2/src/ProductionCode.c
+        cJSON/tests/unity/examples/example_2/src/ProductionCode.h
+        cJSON/tests/unity/examples/example_2/src/ProductionCode2.c
+        cJSON/tests/unity/examples/example_2/src/ProductionCode2.h
+        cJSON/tests/unity/examples/example_2/test/test_runners/all_tests.c
+        cJSON/tests/unity/examples/example_2/test/test_runners/TestProductionCode2_Runner.c
+        cJSON/tests/unity/examples/example_2/test/test_runners/TestProductionCode_Runner.c
+        cJSON/tests/unity/examples/example_2/test/TestProductionCode.c
+        cJSON/tests/unity/examples/example_2/test/TestProductionCode2.c
+        cJSON/tests/unity/examples/example_3/helper/UnityHelper.c
+        cJSON/tests/unity/examples/example_3/helper/UnityHelper.h
+        cJSON/tests/unity/examples/example_3/src/ProductionCode.c
+        cJSON/tests/unity/examples/example_3/src/ProductionCode.h
+        cJSON/tests/unity/examples/example_3/src/ProductionCode2.c
+        cJSON/tests/unity/examples/example_3/src/ProductionCode2.h
+        cJSON/tests/unity/examples/example_3/test/TestProductionCode.c
+        cJSON/tests/unity/examples/example_3/test/TestProductionCode2.c
+        cJSON/tests/unity/examples/unity_config.h
+        cJSON/tests/unity/extras/fixture/src/unity_fixture.c
+        cJSON/tests/unity/extras/fixture/src/unity_fixture.h
+        cJSON/tests/unity/extras/fixture/src/unity_fixture_internals.h
+        cJSON/tests/unity/extras/fixture/src/unity_fixture_malloc_overrides.h
+        cJSON/tests/unity/extras/fixture/test/main/AllTests.c
+        cJSON/tests/unity/extras/fixture/test/template_fixture_tests.c
+        cJSON/tests/unity/extras/fixture/test/unity_fixture_Test.c
+        cJSON/tests/unity/extras/fixture/test/unity_fixture_TestRunner.c
+        cJSON/tests/unity/extras/fixture/test/unity_output_Spy.c
+        cJSON/tests/unity/extras/fixture/test/unity_output_Spy.h
+        cJSON/tests/unity/src/unity.c
+        cJSON/tests/unity/src/unity.h
+        cJSON/tests/unity/src/unity_internals.h
+        cJSON/tests/unity/test/expectdata/testsample_cmd.c
+        cJSON/tests/unity/test/expectdata/testsample_def.c
+        cJSON/tests/unity/test/expectdata/testsample_head1.c
+        cJSON/tests/unity/test/expectdata/testsample_head1.h
+        cJSON/tests/unity/test/expectdata/testsample_mock_cmd.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_def.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_head1.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_head1.h
+        cJSON/tests/unity/test/expectdata/testsample_mock_new1.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_new2.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_param.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_run1.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_run2.c
+        cJSON/tests/unity/test/expectdata/testsample_mock_yaml.c
+        cJSON/tests/unity/test/expectdata/testsample_new1.c
+        cJSON/tests/unity/test/expectdata/testsample_new2.c
+        cJSON/tests/unity/test/expectdata/testsample_param.c
+        cJSON/tests/unity/test/expectdata/testsample_run1.c
+        cJSON/tests/unity/test/expectdata/testsample_run2.c
+        cJSON/tests/unity/test/expectdata/testsample_yaml.c
+        cJSON/tests/unity/test/testdata/CException.h
+        cJSON/tests/unity/test/testdata/cmock.h
+        cJSON/tests/unity/test/testdata/Defs.h
+        cJSON/tests/unity/test/testdata/mockMock.h
+        cJSON/tests/unity/test/testdata/testRunnerGenerator.c
+        cJSON/tests/unity/test/testdata/testRunnerGeneratorSmall.c
+        cJSON/tests/unity/test/testdata/testRunnerGeneratorWithMocks.c
+        cJSON/tests/unity/test/tests/testparameterized.c
+        cJSON/tests/unity/test/tests/testunity.c
+        cJSON/tests/cjson_add.c
+        cJSON/tests/common.h
+        cJSON/tests/compare_tests.c
+        cJSON/tests/json_patch_tests.c
+        cJSON/tests/minify_tests.c
+        cJSON/tests/misc_tests.c
+        cJSON/tests/misc_utils_tests.c
+        cJSON/tests/old_utils_tests.c
+        cJSON/tests/parse_array.c
+        cJSON/tests/parse_examples.c
+        cJSON/tests/parse_hex4.c
+        cJSON/tests/parse_number.c
+        cJSON/tests/parse_object.c
+        cJSON/tests/parse_string.c
+        cJSON/tests/parse_value.c
+        cJSON/tests/parse_with_opts.c
+        cJSON/tests/print_array.c
+        cJSON/tests/print_number.c
+        cJSON/tests/print_object.c
+        cJSON/tests/print_string.c
+        cJSON/tests/print_value.c
+        cJSON/tests/readme_examples.c
+        cJSON/tests/unity_setup.c
+        cJSON/cJSON.c
+        cJSON/cJSON.h
+        cJSON/cJSON_Utils.c
+        cJSON/cJSON_Utils.h
+        cJSON/test.c
+        api.h
+        api_test.c)

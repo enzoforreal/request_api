@@ -1,0 +1,3 @@
+C:/Users/enzof/GolandProjects/tests_api_requeteur_en_c/cmake-build-debug/CMakeFiles/tests_api_requeteur_en_c.dir
+C:/Users/enzof/GolandProjects/tests_api_requeteur_en_c/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/enzof/GolandProjects/tests_api_requeteur_en_c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
